@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Conta</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <main class="view">
+        <section class="auth-card">
+            <h2>Criar Nova Conta</h2>
+            <form id="form-cadastro">
+
+                <div class="input-group">
+                    <label for="cad-nome">Username:</label>
+                    <input type="text" id="cad-nome" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="cad-email">E-mail:</label>
+                    <input type="email" id="cad-email" placeholder="Digite seu e-mail" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="cad-senha">Senha:</label>
+                    <input type="password" id="cad-senha" placeholder="Crie uma senha" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="cad-nivel">Nível de Acesso:</label>
+                    <select id="cad-nivel" style="width: 100%; padding: 12px; background-color: var(--input-bg); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; outline: none;">
+                        <option value="usuario">Usuário Comum</option>
+                    </select>
+                </div>
+
+                <div class="auth-actions">
+                    <button type="submit" id="btnCadastrar" class="btn-primary">Cadastrar</button>
+                    <a href="index.html" class="btn-secondary" style="text-align: center; text-decoration: none; display: block; box-sizing: border-box;">Voltar ao Login</a>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <script type="module" src="cadastro.js"></script>
+</body>
+</html>

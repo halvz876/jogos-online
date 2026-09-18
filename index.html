@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameCenter</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <link rel="stylesheet" href="./estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- NAVBAR COM BUSCA CENTRALIZADA -->
+  <nav id="main-navbar" class="navbar hidden">
+    <div class="profile-container">
+      <button id="btn-profile" class="icon-btn" title="Perfil">
+        <i class="fa-solid fa-user"></i>
+      </button>
+
+      <!-- DROPDOWN PERFIL -->
+      <div id="profile-menu" class="dropdown-menu hidden">
+        <div class="dropdown-header">
+          <p id="user-nickname">nickname</p>
+          <p id="user-email" style="font-size: 0.75rem; text-transform: none; color: var(--text-muted);">email@gmail.com</p>
+          <span id="user-role" class="status-online"><i class="fa-solid fa-circle" style="font-size: 0.5rem; vertical-align: middle; margin-right: 4px;"></i> online</span>
+        </div>
+        <hr class="dropdown-divider">
+        <ul class="menu-list">
+          <li><a href="./chat.html" id="btn-chat"><i class="fa-solid fa-envelope"></i> ver caixa de mensagens</a></li>
+          <li class="danger-item"><a href="#" id="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> sair da conta</a></li>
+          <li class="danger-item"><a href="#" id="btn-delete-account"><i class="fa-solid fa-user-xmark"></i> excluir conta</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BUSCA NA NAVBAR -->
+    <div class="search-container" style="margin-bottom: 0;">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="input-busca-jogos" placeholder="Buscar jogo...">
+      </div>
+    </div>
+
+    <div class="menu-container">
+      <button id="btn-menu-options" class="icon-btn" title="Opções">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
+
+      <!-- DROPDOWN OPÇÕES -->
+      <div id="dropdown-menu" class="dropdown-content hidden">
+        <ul class="menu-list">
+          <li><a href="#" id="btn-config"><i class="fa-solid fa-gear"></i> Configurações</a></li>
+          <li><a href="#" id="menu-link-termos"><i class="fa-solid fa-file-contract"></i> Termos & Privacidade</a></li>
+          <hr class="dropdown-divider">
+          <li id="menu-link-planilha" class="hidden"><a href="./painel.html"><i class="fa-solid fa-table"></i> Planilha de Usuários</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TELA DE LOGIN -->
+  <main id="view-login" class="view">
+    <div class="auth-card">
+      <h2>Acessar Conta</h2>
+      <form id="login-form">
+        <div class="input-group">
+          <label for="login-email">E-mail</label>
+          <input type="email" id="login-email" placeholder="Seu e-mail" required>
+        </div>
+        <div class="input-group">
+          <label for="login-password">Senha</label>
+          <div class="password-wrapper">
+            <input type="password" id="login-password" placeholder="Sua senha" required>
+            <i class="fa-solid fa-eye toggle-password" id="toggle-password"></i>
+          </div>
+        </div>
+        <div class="auth-actions">
+          <button type="submit" class="btn-primary">Entrar</button>
+          <button type="button" id="btn-create-account" class="btn-secondary">Criar conta</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- TELA DE CADASTRO -->
+  <main id="view-register" class="view hidden">
+    <div class="auth-card">
+      <h2>Criar Conta</h2>
+      <form id="register-form">
+        <div class="input-group">
+          <label for="reg-username">Nome de Usuário</label>
+          <input type="text" id="reg-username" placeholder="Seu nickname" required>
+        </div>
+        <div class="input-group">
+          <label for="reg-email">E-mail</label>
+          <input type="email" id="reg-email" placeholder="Seu e-mail" required>
+        </div>
+        <div class="input-group">
+          <label for="reg-password">Senha</label>
+          <input type="password" id="reg-password" placeholder="Sua senha" required>
+        </div>
+        <div class="auth-actions">
+          <button type="submit" class="btn-primary">Cadastrar</button>
+          <button type="button" id="btn-back-to-login" class="btn-secondary">Voltar ao Login</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- TELA HOME / CARROSSEL DE JOGOS -->
+  <main id="view-home" class="view hidden">
+    <div class="carousel-wrapper">
+      <button id="prev-btn" class="carousel-arrow prev"><i class="fa-solid fa-chevron-left"></i></button>
+      
+      <div class="carousel-track">
+        <!-- Card Lateral Esquerdo -->
+        <div class="carousel-card side">
+          <div class="img-wrapper">
+            <img id="img-prev" src="" alt="Anterior">
+          </div>
+        </div>
+
+        <!-- Card Principal (Centro) -->
+        <div class="carousel-card active-card">
+          <h3 id="game-title">Nome do Jogo</h3>
+          <div class="img-wrapper">
+            <img id="game-image" src="" alt="Jogo Atual">
+          </div>
+          <button id="btn-play-current" class="btn-primary">Jogar Agora</button>
+        </div>
+
+        <!-- Card Lateral Direito -->
+        <div class="carousel-card side">
+          <div class="img-wrapper">
+            <img id="img-next" src="" alt="Próximo">
+          </div>
+        </div>
+      </div>
+
+      <button id="next-btn" class="carousel-arrow next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </main>
+<!-- MODAL DE CONFIGURAÇÕES -->
+<div id="modal-config" class="modal-overlay hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3><i class="fa-solid fa-gear"></i> Configurações</h3>
+      <button id="close-config" class="close-btn">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+      <!-- Mudar Nickname -->
+      <div class="config-item">
+        <label for="config-nickname">Alterar Nickname</label>
+        <div class="nickname-input-group">
+          <input type="text" id="config-nickname" placeholder="Novo nickname">
+          <button id="btn-save-nickname" class="btn-primary" style="padding: 8px 14px;">Alterar</button>
+        </div>
+      </div>
+
+      <!-- Status Online -->
+      <div class="config-item checkbox-item">
+        <label for="config-status">Aparecer Online</label>
+        <input type="checkbox" id="config-status" checked>
+      </div>
+
+      <!-- Tema Claro / Escuro -->
+      <div class="config-item checkbox-item">
+        <label for="config-theme">Tema Escuro</label>
+        <input type="checkbox" id="config-theme" checked>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL DE TERMOS E PRIVACIDADE -->
+<div id="modal-termos" class="modal-overlay hidden">
+  <div class="modal-content legal-modal">
+    <div class="modal-header"><h3><i class="fa-solid fa-file-shield"></i> Termos e Privacidade</h3><button id="close-termos" class="close-btn">&times;</button></div>
+    <div class="modal-body legal-body">
+      <h4>Termos de uso</h4><p>Use o GameCenter de forma responsável e respeite os demais usuários. Os jogos são disponibilizados para entretenimento e podem receber atualizações.</p>
+      <h4>Privacidade</h4><p>O nome de usuário e o e-mail são usados para autenticação, identificação no perfil e administração da conta. Não compartilhe sua senha. Você pode solicitar a exclusão da conta pelo menu do perfil.</p>
+      <h4>Dados e segurança</h4><p>As informações são armazenadas no serviço de autenticação e banco de dados configurado para o projeto. Ao continuar usando o site, você concorda com estas condições.</p>
+      <p class="legal-date">Última atualização: 18 de setembro de 2026</p>
+    </div>
+  </div>
+</div>
+  <script type="module" src="./script.js"></script>
+  <script type="module" src="./login.js"></script>
+</body>
+</html>
+</body>
+</html>

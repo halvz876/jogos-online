@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Usuários</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-body: #1b1f2e;
+      --bg-card: #24293e;
+      --bg-input: #1b1f2e;
+      --text-main: #ffffff;
+      --text-sub: #a0aec0;
+      --border-color: #2d3748;
+      --tr-hover: #2a3047;
+    }
+
+    body.light-theme {
+      --bg-body: #f0f2f5 !important;
+      --bg-card: #ffffff !important;
+      --bg-input: #f0f2f5 !important;
+      --text-main: #1c1e21 !important;
+      --text-sub: #65676b !important;
+      --border-color: #e4e6eb !important;
+      --tr-hover: #f5f6f8 !important;
+    }
+
+    body {
+      background-color: var(--bg-body) !important;
+      color: var(--text-main) !important;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 30px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn-voltar {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-sub) !important;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      background: var(--bg-card) !important;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color) !important;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .btn-voltar:hover {
+      color: var(--text-main) !important;
+      border-color: #5865f2 !important;
+    }
+
+    .container-painel {
+      max-width: 950px;
+      margin: 40px auto 0 auto;
+      background: var(--bg-card) !important;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-main) !important;
+    }
+
+    .painel-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      margin-top: 15px;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 14px;
+      color: var(--text-sub) !important;
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 42px;
+      padding: 0 14px 0 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color) !important;
+      background-color: var(--bg-input) !important;
+      color: var(--text-main) !important;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .sort-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-sub) !important;
+    }
+
+    .sort-box select {
+      height: 42px;
+      padding: 0 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color) !important;
+      background-color: var(--bg-input) !important;
+      color: var(--text-main) !important;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .tabela-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--bg-input) !important;
+      color: var(--text-sub) !important;
+      font-weight: 600;
+      padding: 14px 16px;
+      font-size: 14px;
+      border-bottom: 2px solid var(--border-color) !important;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color) !important;
+      font-size: 14px;
+      color: var(--text-main) !important;
+    }
+
+    tr:hover {
+      background-color: var(--tr-hover) !important;
+    }
+
+    .btn-excluir {
+      background-color: #e53e3e;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-nivel {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .badge-usuario { background: #319795; color: white; }
+    .badge-adm1 { background: #dd6b20; color: white; }
+    .badge-adm2 { background: #805ad5; color: white; }
+  </style>
+</head>
+<body>
+
+  <a href="./index.html?view=home" class="btn-voltar" id="btn-voltar-link">
+    <i class="fa-solid fa-arrow-left"></i> Voltar ao Menu
+  </a>
+
+  <div class="container-painel">
+    <h1>Planilha de Usuários Cadastrados</h1>
+
+    <div class="painel-toolbar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="input-busca-email" placeholder="Buscar por e-mail ou nome...">
+      </div>
+
+      <div class="sort-box">
+        <label for="select-ordenar"><i class="fa-solid fa-sort"></i> Ordenar por:</label>
+        <select id="select-ordenar">
+          <option value="nome-asc" selected>Nome (A-Z)</option>
+          <option value="nome-desc">Nome (Z-A)</option>
+          <option value="data-desc">Mais recentes primeiro</option>
+          <option value="data-asc">Mais antigos primeiro</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="tabela-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th>E-mail</th>
+            <th>Nível de Acesso</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-usuarios">
+          <!-- Renderizado dinamicamente -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="./painel.js" type="module"></script>
+</body>
+</html>

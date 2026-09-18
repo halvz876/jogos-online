@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planilha de Usuários - Admin</title>
+  <link rel="stylesheet" href="./estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background-color: var(--bg-dark); color: #fff; padding: 20px;">
+
+  <div class="admin-container" style="max-width: 900px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h1><i class="fa-solid fa-table"></i> Planilha de Usuários</h1>
+      <a href="./index.html?view=home" class="btn-secondary" style="padding: 8px 16px; text-decoration: none; border-radius: 6px;"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
+    </div>
+
+    <!-- CONTROLES DE FILTRO E ORDENAÇÃO -->
+    <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+      <input type="text" id="input-busca-email" placeholder="Buscar por e-mail..." style="flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #1e293b; color: #fff;">
+      <select id="select-ordenar" style="padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #1e293b; color: #fff;">
+        <option value="nome-asc">Nome (A-Z)</option>
+        <option value="nome-desc">Nome (Z-A)</option>
+        <option value="data-desc">Mais recentes</option>
+        <option value="data-asc">Mais antigos</option>
+      </select>
+    </div>
+
+    <!-- TABELA DE USUÁRIOS -->
+    <div style="overflow-x: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+          <tr style="border-bottom: 1px solid #334155; background: #0f172a;">
+            <th style="padding: 12px;">USUÁRIO</th>
+            <th style="padding: 12px;">E-MAIL</th>
+            <th style="padding: 12px;">NÍVEL DE ACESSO</th>
+            <th style="padding: 12px;">AÇÕES</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-usuarios">
+          <!-- Preenchido via painel.js -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="./painel.js"></script>
+</body>
+</html>

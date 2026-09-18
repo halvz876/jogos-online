@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Editar Conta</title>
+</head>
+<body>
+    <form id="formEditar">
+        <fieldset id="editConta">
+            <legend>EDITAR MEUS DADOS</legend>
+            <p>
+                <label>E-mail Atual:</label>
+                <input type="email" id="editEmailAuth" required>
+            </p>
+            <p>
+                <label>Senha Atual:</label>
+                <input type="password" id="editSenhaAuth" required>
+            </p>
+            <center style="margin-bottom: 15px;">
+                <button type="button" id="btnCarregarDados">CARREGAR DADOS</button>
+            </center>
+
+            <p>
+                <label>Novo Nome:</label>
+                <input type="text" id="editNome" disabled required>
+            </p>
+            <center>
+                <button type="submit" id="btnAtualizar" disabled>SALVAR ALTERAÇÕES</button>
+            </center>
+            <div class="links-navegacao">
+                <p><a href="index.html">Voltar ao Login</a></p>
+            </div>
+        </fieldset>
+    </form>
+   <script type="module" src="editar.js"></script>
+</body>
+</html>

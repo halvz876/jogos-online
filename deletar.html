@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Conta</title>
+    <link rel="stylesheet" href="estilo.css?v=5">
+</head>
+<body>
+    <fieldset>
+        <legend>EXCLUIR MINHA CONTA</legend>
+        
+        <div class="campo" style="margin-top: 15px;">
+            <label for="emailDeletar">E-mail:</label>
+            <input type="email" id="emailDeletar" placeholder="Digite seu e-mail">
+        </div>
+
+        <div class="campo">
+            <label for="senhaDeletar">Senha:</label>
+            <div class="campo-senha">
+                <input type="password" id="senhaDeletar" placeholder="Digite sua senha">
+                <span id="toggleSenhaDeletar" class="toggle-senha">👁️</span>
+            </div>
+        </div>
+
+        <button id="btnDeletarConta" class="btn-perigo">EXCLUIR PERMANENTEMENTE</button>
+
+        <div class="links">
+            <a href="index.html">Voltar ao Login</a>
+        </div>
+    </fieldset>
+
+    <script type="module" src="deletar.js"></script>
+</body>
+</html>
